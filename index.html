@@ -21,6 +21,9 @@
         padding: 0;
         overflow: hidden;
       }
+      body {
+        background-color: #FFDF80;
+      }
       .title {
         position: absolute;
         float: left;
@@ -32,11 +35,24 @@
         text-shadow: 1px 1px 1px rgb(163, 42, 42);
         cursor: default;
       }
+
+      #instructions {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        color: black;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 40px;
+      }
     </style>
   </head>
   <body>
     <div class="title">
       <div>WHALESONG GRAPHS</div>
+    </div>
+    <div id="instructions">
+      Click and drag to draw
     </div>
     <script
       type=text/javascript

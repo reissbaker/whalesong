@@ -12,6 +12,17 @@ const UNKNOWN_DIR = 0;
 const LEFT_DIR = -1;
 const RIGHT_DIR = 1;
 
+const instructions = {
+  hidden: false,
+  hide() {
+    if(this.hidden) return;
+    const element = document.getElementById("instructions");
+    element.remove();
+    this.hidden = true;
+  }
+};
+
+
 function setup() {
   // Bind event handlers
   const cnv = createCanvas(windowWidth, windowHeight);
@@ -46,6 +57,7 @@ function windowResized() {
 }
 
 function mousePressed() {
+  instructions.hide();
   setState(drawing);
 }
 
