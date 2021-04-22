@@ -17,11 +17,11 @@ const instructions = {
   hide() {
     if(this.hidden) return;
     const element = document.getElementById("instructions");
-    element.remove();
+    console.log(element);
+    element.style.display = 'none';
     this.hidden = true;
   }
 };
-
 
 function setup() {
   // Bind event handlers
