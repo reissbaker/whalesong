@@ -17,7 +17,6 @@ const instructions = {
   hide() {
     if(this.hidden) return;
     const element = document.getElementById("instructions");
-    console.log(element);
     element.style.display = 'none';
     this.hidden = true;
   }
