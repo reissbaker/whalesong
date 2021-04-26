@@ -262,22 +262,38 @@ class Segment {
   endX() { return this.points[2]; }
   endY() { return this.points[3] + this.noiseGen.noise(); }
 
-  draw() {
+  drawColor() {
     const startX = this.startX(),
           startY = this.startY(),
           endX = this.endX(),
           endY = this.endY();
-    const maxY = Math.max(startY, endY);
-    const luminosity = map(maxY, windowHeight, 0, 20, 80);
-    const lineColor = color(HUE, SATURATION, luminosity);
+    const lineColor = this.color(startY, endY);
     fill(lineColor);
     noStroke();
     quad(startX, startY, endX, endY, endX, windowHeight, startX, windowHeight);
+  }
+
+  drawHighlight() {
+    const startX = this.startX(),
+          startY = this.startY(),
+          endX = this.endX(),
+          endY = this.endY();
+
+    const luminosity = this.lum(startY, endY);
 
     // Draw a little lighter line on top of the rect for visual clarity
     strokeWeight(1);
     stroke(HUE, SATURATION, luminosity + 10);
     line(startX, startY, endX, endY);
+  }
+
+  color(startY, endY) {
+    return color(HUE, SATURATION, this.lum(startY, endY));
+  }
+
+  lum(startY, endY) {
+    const maxY = Math.max(startY, endY);
+    return map(maxY, windowHeight, 0, 20, 80);
   }
 }
 
@@ -305,7 +321,8 @@ class SegmentsStore {
   }
 
   draw() {
-    this.segments.forEach(segment => segment.draw());
+    this.segments.forEach(segment => segment.drawColor());
+    this.segments.forEach(segment => segment.drawHighlight());
   }
 }
 
