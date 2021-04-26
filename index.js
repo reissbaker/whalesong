@@ -13,7 +13,7 @@ const LEFT_DIR = -1;
 const RIGHT_DIR = 1;
 
 const NOISE_SCALE = 40;
-const NOISE_INTERVAL = 0.01;
+const NOISE_INTERVAL = 0.02;
 
 const instructions = {
   hidden: false,
